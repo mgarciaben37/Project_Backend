@@ -7,11 +7,11 @@ import createDebug from 'debug';
 const debug = createDebug('myapp:BooksController');
 
 export class BooksController {
+    bookService: BookService;
     constructor() {
         debug('booksController constructor');
+        this.bookService = new BookService();
     }
-
-    bookService: BookService = new BookService();
 
     public async findAll(req: Request, res: Response) {
         debug('/books invoked');

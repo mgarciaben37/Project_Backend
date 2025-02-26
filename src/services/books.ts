@@ -1,5 +1,6 @@
 import { Book } from '../models/book.js';
 import createDebug from 'debug';
+import { BookRepository } from '../repositories/bookrepository.js';
 
 //declaramos la variable debug que usaremos en el archivo
 const debug = createDebug('myapp:BookService');
@@ -82,13 +83,16 @@ books.push(
 );
 
 export class BookService {
+
+    bookRepository:BookRepository = new BookRepository();
     constructor() {
         debug('BookService constructor');
     }
 
     public findAll = async () => {
         debug('Ejecutando FindAll');
-        return books;
+        return this.bookRepository.findAll();
+        
     };
 
     public findById = async (id: number) => {

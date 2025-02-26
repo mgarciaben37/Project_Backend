@@ -7,6 +7,7 @@ import createDebug from 'debug';
 import { BooksController } from './controllers/books.js';
 import { BaseController } from './controllers/base.js';
 import { errorHandler } from './errors/errorhandler.js';
+import { connect } from './repositories/db.js';
 
 // Crear Server Express
 const app = express();
@@ -44,4 +45,5 @@ app.get('/home', baseController.home); // En este caso para la ruta /home se dev
 debug('App Initialized');
 
 app.use(errorHandler);
+connect();
 export default app;
